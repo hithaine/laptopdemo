@@ -83,28 +83,28 @@ public class DeleteController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        LaptopDAO laptopDAO = new LaptopDAO();
-        String isDelete = request.getParameter("isDelete");
-        if (isDelete.equals("1")) {
-            //get the id
-            int id = Integer.parseInt(request.getParameter("id"));
-
-            //delete
-            try {
-                // delete laptop in database
-                laptopDAO.deleteLaptop(id);
-            } catch (SQLException ex) {
-                Logger.getLogger(InsertController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        // Get the updated list of laptops
-        List<Laptop> laptops = laptopDAO.getLaptops();
-
-        // Set the laptops attribute in the request
-        request.setAttribute("laptops", laptops);
-
-        // Redirect the user to the list.jsp page
-        request.getRequestDispatcher("list.jsp").forward(request, response);
+//        LaptopDAO laptopDAO = new LaptopDAO();
+//        String isDelete = request.getParameter("isDelete");
+//        if (isDelete.equals("1")) {
+//            //get the id
+//            int id = Integer.parseInt(request.getParameter("id"));
+//
+//            //delete
+//            try {
+//                // delete laptop in database
+//                laptopDAO.deleteLaptop(id);
+//            } catch (SQLException ex) {
+//                Logger.getLogger(InsertController.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//        }
+//        // Get the updated list of laptops
+//        List<Laptop> laptops = laptopDAO.getLaptops();
+//
+//        // Set the laptops attribute in the request
+//        request.setAttribute("laptops", laptops);
+//
+//        // Redirect the user to the list.jsp page
+//        request.getRequestDispatcher("list.jsp").forward(request, response);
     }
 
     /**

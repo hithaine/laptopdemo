@@ -14,6 +14,7 @@
             <th>Name</th>
             <th>Price</th>
             <th>Color</th>
+            <th>Action</th>
         </thead>
         <tbody>
             <%

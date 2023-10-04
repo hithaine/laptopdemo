@@ -36,7 +36,7 @@ public class LaptopDAO extends DBContext {
     public void insertLaptop(Laptop laptop) throws SQLException {
         String sql = "INSERT [dbo].[Laptop] ([id], [name], [price], [color]) VALUES (?, ?, ?, ?)";
         PreparedStatement statement = connection.prepareStatement(sql);
-        statement.setInt(1, laptop.getId());
+        statement.setInt(1, getNextLaptopId());
         statement.setString(2, laptop.getName());
         statement.setDouble(3, laptop.getPrice());
         statement.setString(4, laptop.getColor());
@@ -61,5 +61,16 @@ public class LaptopDAO extends DBContext {
         statement.setInt(1, id);
 
         statement.executeUpdate();
+    }
+    
+    public int getNextLaptopId() throws SQLException {
+        String sql = "SELECT MAX(id) FROM laptop";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        ResultSet rs = statement.executeQuery();
+        if (rs.next()) {
+            return rs.getInt(1) + 1;
+        } else {
+            return 1;
+        }
     }
 }
